@@ -16,6 +16,7 @@ function App() {
       <Route path="/register" element={<RegisterForm />} /> 
       
       <Route path="*" element={<h1>404 - Page Non trouvée</h1>} />
+      
     </Routes>
   );
 }

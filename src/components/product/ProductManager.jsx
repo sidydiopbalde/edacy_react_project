@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  PlusCircle, Edit, Trash2, Save, X, Search, 
-  RefreshCw, ChevronDown, ChevronUp, Package, DollarSign, LogOut
+  PlusCircle, Edit, Trash2, Save, X, Search, ChevronDown, ChevronUp, Package, DollarSign, LogOut
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // Add useNavigate for logout
+import { useNavigate } from 'react-router-dom'; 
 import useFetch from '../backend/Services/useFetch.js';
 import useSave from '../backend/Services/useSave.js';
-import './ProductManager.css';
+
 
 const DEFAULT_PRODUCTS = [
   { id: 1, name: 'Casque Audio', price: 99.99, quantity: 15 },
@@ -16,14 +15,14 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const ProductManager = () => {
-  const navigate = useNavigate(); // Add navigate for logout
+  const navigate = useNavigate(); 
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false); // State for deletion modal
-  const [productToDelete, setProductToDelete] = useState(null); // Track product to delete
-  const [showLogoutModal, setShowLogoutModal] = useState(false); // State for logout modal
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+  const [showLogoutModal, setShowLogoutModal] = useState(false); 
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'ascending' });
@@ -104,6 +103,7 @@ const ProductManager = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
+      //appel de l'api backend (nest)
       await saveData(`product/${id}`, {}, "DELETE");
       setProducts(products.filter(product => product.id !== id));
       showNotification('Produit supprimé avec succès');
@@ -122,8 +122,8 @@ const ProductManager = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token from localStorage
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('token'); 
+    navigate('/login');
   };
 
   const confirmLogout = () => {
