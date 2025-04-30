@@ -250,7 +250,7 @@ const ProductManager = () => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-900">
                     <tr>
-                      {['id', 'name', 'price', 'quantity'].map((key) => (
+                      {['code', 'name', 'price', 'quantity'].map((key) => (
                         <th 
                           key={key}
                           scope="col" 
@@ -287,7 +287,7 @@ const ProductManager = () => {
                             </td>
                             <td className="px-6 py-4">
                               <div className="text-sm font-medium text-gray-900 dark:text-gray-200 flex items-center">
-                                <DollarSign size={16} className="text-green-600 mr-1 dark:text-green-400" /> 
+                                {/* <DollarSign size={16} className="text-green-600 mr-1 dark:text-green-400" />  */}
                                 {product.price.toFixed(2)}
                               </div>
                             </td>
@@ -299,7 +299,7 @@ const ProductManager = () => {
                                     ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' 
                                     : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
                               }`}>
-                                {product.quantity} en stock
+                                {product.quantity} 
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -315,7 +315,7 @@ const ProductManager = () => {
                                 <motion.button
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
-                                  onClick={() => confirmDeleteProduct(product)} // Replace window.confirm with modal
+                                  onClick={() => confirmDeleteProduct(product)} 
                                   className="text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-100 transition-colors dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-gray-600"
                                 >
                                   <Trash2 size={18} />
@@ -341,7 +341,7 @@ const ProductManager = () => {
                                         <h4 className="font-bold text-indigo-800 mb-2 dark:text-indigo-300">Détails du produit</h4>
                                         <p><span className="font-medium">Code:</span> {product.id}</p>
                                         <p><span className="font-medium">Nom:</span> {product.name}</p>
-                                        <p><span className="font-medium">Prix:</span> ${product.price.toFixed(2)}</p>
+                                        <p><span className="font-medium">Prix:</span> {product.price.toFixed(2)}</p>
                                         <p><span className="font-medium">Quantité:</span> {product.quantity}</p>
                                       </div>
                                       <div>
